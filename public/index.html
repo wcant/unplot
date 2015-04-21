@@ -2,13 +2,16 @@
 <html>
     <head>
         <title>Unplot</title>
-        <script src="js/dropzone.js"></script>
+        <script src="../dropzone.js"></script>
+        <link rel="stylesheet" type="text/css" href="../style.css">
     </head>
     <body>
+      <div class="drop-container">
         <form action="/file-upload" class="dropzone" id="dropzone">
               <div class="fallback">
                   <input name="file" type="file" multiple />
               </div>
         </form>
+      </div>
     </body>
 </html>
