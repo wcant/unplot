@@ -1,7 +1,15 @@
 var multer = require('multer'),
     express = require('express'),
-    app = express();
+    app = express(),
+    redis = require('redis'),
+    client = redis.createClient();
 
+//Redis Connect
+client.on('connect', function() {
+    console.log('Redis connected');
+});
+
+//Multer handles the renaming/moving of files to upload/
 app.use(multer({ 
   dest:'./uploads/',
   rename: function (fieldname, filename) {
@@ -10,7 +18,6 @@ app.use(multer({
 }));
 
 app.use(express.static('public'));
-
 app.get('/', function(req, res) {
   res.sendFile('index.html');
 });
