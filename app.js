@@ -11,10 +11,10 @@ client.on('connect', function() {
 
 //Multer handles the renaming/moving of files to upload/
 app.use(multer({ 
-  dest:'./uploads/',
-  rename: function (fieldname, filename) {
-    return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
-  } 
+        dest:'./uploads/',
+        rename: function (fieldname, filename) {
+        return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
+        } 
 }));
 
 app.use(express.static('public'));
