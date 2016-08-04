@@ -2,8 +2,8 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-import itertools
-import operator
+from itertools import groupby
+from operator import itemgetter
 
 
 def histogram_plot(data):
@@ -15,8 +15,11 @@ def histogram_plot(data):
 def most_common(data):
 
     SL = sorted((x, i) for i, x in enumerate(data))
-    groups = itertools.groupby(SL, key=operator.itemgetter(0))
+    groups = groupby(SL, key=itemgetter(0))
 
+    # function is used as key in max()
+    # counts the number of occurrences of the enumerated data
+    # max() will then return the data value with the highest count
     def _auxfun(g):
         item, iterable = g
         count = 0
